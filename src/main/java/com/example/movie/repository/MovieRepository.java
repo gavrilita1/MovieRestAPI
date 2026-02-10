@@ -3,10 +3,7 @@ package com.example.movie.repository;
 import com.example.movie.model.Movie;
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Repository
 public class MovieRepository {
@@ -20,6 +17,14 @@ public class MovieRepository {
 
     public List<Movie> findAll(){
         return new ArrayList<>(movies.values());
+    }
+
+    public Optional<Movie> findByTitle(String title){
+        return Optional.ofNullable(movies.get(title));
+    }
+
+    public void delete(String title){
+        movies.remove(title);
     }
 
 }
